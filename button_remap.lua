@@ -20,9 +20,9 @@ return {
       local src = tonumber(cfg["remap_src" .. i]) or 0
       local dst = tonumber(cfg["remap_dst" .. i]) or 0
       if src > 0 and dst > 0 and ev.code == src then
-        pf.log("remap " .. src .. " → " .. dst)
         pf.emit(1, dst, ev.pressed and 1 or 0)
-        return { drop = true }
+        pf.drop()
+        return ev
       end
     end
     return ev
