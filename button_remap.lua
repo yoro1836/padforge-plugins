@@ -1,3 +1,10 @@
+-- Common Xbox 360 button codes
+local BTN_A = 304; local BTN_B = 305; local BTN_X = 307; local BTN_Y = 308
+local BTN_LB = 310; local BTN_RB = 311
+local BTN_BACK = 314; local BTN_START = 315
+local BTN_LS = 317; local BTN_RS = 318
+local BTN_UP = 544; local BTN_DOWN = 545; local BTN_LEFT = 546; local BTN_RIGHT = 547
+
 return {
   id = "button_remap",
   name = "Button Remap",
@@ -20,7 +27,7 @@ return {
       local src = tonumber(cfg["remap_src" .. i]) or 0
       local dst = tonumber(cfg["remap_dst" .. i]) or 0
       if src > 0 and dst > 0 and ev.code == src then
-        pf.emit(1, dst, ev.pressed and 1 or 0)
+        pf.emit(pf.EV_KEY, dst, ev.pressed and 1 or 0)
         pf.drop()
         return ev
       end
