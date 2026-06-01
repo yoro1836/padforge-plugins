@@ -8,14 +8,15 @@ return {
     { key = "outer_dz_left",  label = "Left outer (‰)",  kind = "permille", default = "0", min = 0, max = 500 },
     { key = "outer_dz_right", label = "Right outer (‰)", kind = "permille", default = "0", min = 0, max = 500 },
   },
-  process = function(stick, cfg, pf)
-    local outer = tonumber(cfg["outer_dz_" .. stick.side]) or 0
-    if outer <= 0 then return stick end
+  process = function(ev, cfg, pf)
+    if ev.kind ~= "stick" then return ev end
+    local outer = tonumber(cfg["outer_dz_" .. ev.side]) or 0
+    if outer <= 0 then return ev end
     local limit = (1000 - outer) * 32767 / 1000
-    if stick.x > limit then stick.x = 32767
-    elseif stick.x < -limit then stick.x = -32767 end
-    if stick.y > limit then stick.y = 32767
-    elseif stick.y < -limit then stick.y = -32767 end
-    return stick
+    if ev.x > limit then ev.x = 32767
+    elseif ev.x < -limit then ev.x = -32767 end
+    if ev.y > limit then ev.y = 32767
+    elseif ev.y < -limit then ev.y = -32767 end
+    return ev
   end
 }

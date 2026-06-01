@@ -13,15 +13,12 @@ return {
   },
   process = function(ev, cfg, pf)
     if ev.kind ~= "trigger" then return ev end
-    local side = ev.side
-    local mn = tonumber(cfg["trig_" .. side .. "_min"]) or 0
-    local mx = tonumber(cfg["trig_" .. side .. "_max"]) or 1000
+    local mn = tonumber(cfg["trig_" .. ev.side .. "_min"]) or 0
+    local mx = tonumber(cfg["trig_" .. ev.side .. "_max"]) or 1000
     local curve = tonumber(cfg.trig_curve) or 1
-    -- remap value from [0,255] to [min,max] permille of 32767
     local norm = ev.value / 255.0
     local curved = math.pow(norm, curve)
-    local out = (mn + (mx - mn) * curved) / 1000.0 * 32767.0
-    ev.value = math.floor(out + 0.5)
+    ev.value = math.floor((mn + (mx - mn) * curved) / 1000.0 * 32767.0 + 0.5)
     return ev
   end
 }

@@ -8,13 +8,14 @@ return {
     { key = "deadzone_left",  label = "Left (‰)",  kind = "permille", default = "91", min = 0, max = 1000 },
     { key = "deadzone_right", label = "Right (‰)", kind = "permille", default = "91", min = 0, max = 1000 },
   },
-  process = function(stick, cfg, pf)
-    local dz = tonumber(cfg["deadzone_" .. stick.side]) or 0
-    if dz <= 0 then return stick end
+  process = function(ev, cfg, pf)
+    if ev.kind ~= "stick" then return ev end
+    local dz = tonumber(cfg["deadzone_" .. ev.side]) or 0
+    if dz <= 0 then return ev end
     local thr = dz * 32767 / 1000
-    if stick.x * stick.x + stick.y * stick.y < thr * thr then
-      stick.x = 0; stick.y = 0
+    if ev.x * ev.x + ev.y * ev.y < thr * thr then
+      ev.x = 0; ev.y = 0
     end
-    return stick
+    return ev
   end
 }
