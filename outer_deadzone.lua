@@ -2,7 +2,7 @@ return {
   id = "outer_deadzone",
   name = "Outer Deadzone",
   version = "1.0.0",
-  author = "padforge",
+  author = "keyforge",
   description = "Saturates stick near edges — small pushes reach full output",
   settings = {
     { key = "outer_dz_left",  label = "Left outer (‰)",  kind = "permille", default = "0", min = 0, max = 500 },

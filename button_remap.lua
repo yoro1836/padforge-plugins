@@ -9,7 +9,7 @@ return {
   id = "button_remap",
   name = "Button Remap",
   version = "1.0.0",
-  author = "padforge",
+  author = "keyforge",
   description = "Remap up to 4 button pairs (source → target)",
   settings = {
     { key = "remap_src1", label = "Remap 1 From", kind = "number", default = "0", min = 0, max = 767 },

@@ -2,7 +2,7 @@ return {
   id = "deadzone",
   name = "Deadzone Filter",
   version = "1.0.0",
-  author = "padforge",
+  author = "keyforge",
   description = "Circular deadzone (‰-based per stick)",
   settings = {
     { key = "deadzone_left",  label = "Left (‰)",  kind = "permille", default = "91", min = 0, max = 1000 },

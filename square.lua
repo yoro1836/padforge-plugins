@@ -2,7 +2,7 @@ return {
   id = "square",
   name = "Square Correction",
   version = "1.0.0",
-  author = "padforge",
+  author = "keyforge",
   description = "Circular to square stick mapping per stick",
   settings = {
     { key = "square_left",  label = "Left",  kind = "toggle", default = "1" },

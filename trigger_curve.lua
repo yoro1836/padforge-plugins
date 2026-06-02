@@ -2,7 +2,7 @@ return {
   id = "trigger_curve",
   name = "Trigger Curve",
   version = "1.0.0",
-  author = "padforge",
+  author = "keyforge",
   description = "Adjust trigger sensitivity and output range per side",
   settings = {
     { key = "trig_left_min",  label = "LT Min",  kind = "permille", default = "0",  min = 0, max = 1000 },
