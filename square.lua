@@ -23,5 +23,16 @@ return {
     ev.x = math.floor(math.max(-32767, math.min(32767, dx * f + 0.5)))
     ev.y = math.floor(math.max(-32767, math.min(32767, dy * f + 0.5)))
     return ev
+  end,
+  init = function(cfg, pf)
+    local devices = pf.scan_devices()
+    for _, d in ipairs(devices) do
+      local n = d[1]:lower()
+      if n:match("xbox") or n:match("pad") or n:match("gamepad")
+         or n:match("dualshock") or n:match("controller") then
+        pf.set_config("VID", d[2]); pf.set_config("PID", d[3])
+        return
+      end
+    end
   end
 }
