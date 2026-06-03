@@ -17,17 +17,5 @@ return {
       ev.x = 0; ev.y = 0
     end
     return ev
-  end,
-  init = function(cfg, pf)
-    local devices = pf.scan_devices()
-    for _, d in ipairs(devices) do
-      local n = d[1]:lower()
-      if n:match("xbox") or n:match("pad") or n:match("gamepad")
-         or n:match("dualshock") or n:match("controller") then
-        pf.set_config("VID", d[2]); pf.set_config("PID", d[3])
-        pf.log("device: " .. d[1])
-        return
-      end
-    end
   end
 }
